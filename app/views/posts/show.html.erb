@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user.email %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= to_markdown @post.body %>
+</p>
+<br><br>
+<p><h1>Comments</h1></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>From</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render :partial => 'comment', :collection => @post.comments %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_user_post_path(current_user, @post) %> |
+<%= link_to 'Back', user_posts_path(current_user) %> |
+<%= link_to 'Just Say Something!', new_user_post_comment_path(@user, @post) %> |
+

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KamiiyuBlog</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <p class="sign"><%= link_to_if !user_signed_in?, 'Sign in', new_user_session_path %>:<%= link_to_if user_signed_in?, 'Sign out', destroy_user_session_path, data: { method: :delete, confirm: "Are you sure?"} %></p>
+  <p class="user"><%= "Hi, #{current_user.try(:email)}!" %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
